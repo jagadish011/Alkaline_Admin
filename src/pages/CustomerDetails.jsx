@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../constants";
@@ -8,12 +8,18 @@ const CustomerDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [customer, setCustomer] = useState(null);
+  const toastShown = useRef(false);
 
   const fetchCustomer = async () => {
     try {
       const res = await axios.get(`${BASE_URL}customer/getCustomerById/${id}`);
-      if (res.status === 200 && res.data.success) {
+      if (res.status === 200 ) {
         setCustomer(res.data.customerDoc);
+        console.log(res.data);
+        if (!toastShown.current) {
+          toast.success("Customer data fetched successfully.");
+          toastShown.current = true;
+        }
       } else {
         toast.error("Failed to fetch customer data.");
       }
@@ -27,28 +33,22 @@ const CustomerDetail = () => {
     fetchCustomer();
   }, [id]);
 
-  useEffect(() => {
-    if (customer) {
-      toast.success("Customer data fetched successfully.");
-    }
-  }, [customer]);
-
   if (!customer) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="flex items-center justify-center">
       <div className="max-w-4xl mx-auto mt-10 p-8 bg-white shadow-xl rounded-lg border">
         <div className="px-4 py-6">
           <h2 className="text-3xl font-bold mb-8">Customer Details</h2>
           <div className="grid grid-cols-2 gap-8">
             <div>
               <p>
-                <span className="font-semibold">First Name:</span> {customer.firstName}
+                <span className="font-semibold">User Name:</span> {customer?.user?.username}                
               </p>
               <p>
-                <span className="font-semibold">Last Name:</span> {customer.lastName}
+                <span className="font-semibold">User Phone Number:</span> {customer?.user?.phone}                
               </p>
               <p>
                 <span className="font-semibold">Shop Name:</span> {customer.shopName}

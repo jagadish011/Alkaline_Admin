@@ -43,7 +43,7 @@ const Sidebar = () => {
           } sm:translate-x-0`}
           aria-label="Sidebar"
         >
-          <div className="h-full px-3 py-4 overflow-y-auto">
+          <div className="h-full px-3 py-4 ">
             <button
               onClick={toggleSidebar}
               className="absolute top-2 right-2 text-gray-400 hover:text-gray-300 focus:outline-none lg:hidden"
@@ -69,13 +69,24 @@ const Sidebar = () => {
 
               <li>
                 <Link
-                  to="/user"
+                  to="/allCustomer"
                   className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
-                    location.pathname === "/user" ? "bg-[#0D58A6]" : ""
+                    location.pathname === "/allCustomer" ? "bg-[#0D58A6]" : ""
                   }`}
                 >
                   <FaRegCircleUser />
                   <span className="ms-3">User</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/addCustomer"
+                  className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
+                    location.pathname === "/addCustomer" ? "bg-[#0D58A6]" : ""
+                  }`}
+                >
+                  <FaRegCircleUser />
+                  <span className="ms-3">Add User</span>
                 </Link>
               </li>
 
