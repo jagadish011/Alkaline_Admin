@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar';
 import AdminCustomer from './pages/AllCustomer';
 import CustomerDetail from './pages/CustomerDetails';
 import AddCustomer from './pages/AddCustomer';
+import EditCustomer from './pages/EditCustomer';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/allCustomer" element={<AdminCustomer />} />
             <Route path="/customerDetails/:id" element={<CustomerDetail />} />
             <Route path= "/addCustomer" element={<AddCustomer />} />
+            <Route path= "/editCustomer/:id" element={<EditCustomer />} />
           </Route>
         </Routes>
       </Router>
