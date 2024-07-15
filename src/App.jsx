@@ -7,6 +7,8 @@ import AdminCustomer from './pages/AllCustomer';
 import CustomerDetail from './pages/CustomerDetails';
 import AddCustomer from './pages/AddCustomer';
 import EditCustomer from './pages/EditCustomer';
+import CustomerBooking from './pages/CustomerBooking';
+import AllBooking from './pages/AllBookings';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
             <Route path="/customerDetails/:id" element={<CustomerDetail />} />
             <Route path= "/addCustomer" element={<AddCustomer />} />
             <Route path= "/editCustomer/:id" element={<EditCustomer />} />
+            <Route path= "/customerBooking/:id" element={<CustomerBooking />} />
+            <Route path= "/allBookings" element={<AllBooking />} />
           </Route>
         </Routes>
       </Router>
