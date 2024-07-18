@@ -75,7 +75,7 @@ const Sidebar = () => {
                   }`}
                 >
                   <FaRegCircleUser />
-                  <span className="ms-3">User</span>
+                  <span className="ms-3">All Customers</span>
                 </Link>
               </li>
               <li>
@@ -86,10 +86,11 @@ const Sidebar = () => {
                   }`}
                 >
                   <FaRegCircleUser />
-                  <span className="ms-3">Add User</span>
+                  <span className="ms-3">Add Customer</span>
                 </Link>
               </li>
 
+{/* 
               <li>
                 <Link
                   to="/driver"
@@ -107,28 +108,29 @@ const Sidebar = () => {
                   )}
                 </Link>
               </li>
+  */}
 
               <li>
                 <Link
-                  to="/totalRides"
+                  to="/bookingsToday"
                   className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
-                    location.pathname === "/totalRides" ? "bg-[#0D58A6]" : ""
+                    location.pathname === "/bookingsToday" ? "bg-[#0D58A6]" : ""
                   }`}
                 >
                   <BsCarFrontFill />
-                  <span className="ms-3">Rides</span>
+                  <span className="ms-3">Today</span>
                 </Link>
               </li>
 
               <li>
                 <Link
-                  to="/payment"
+                  to="/bookings"
                   className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
-                    location.pathname === "/payment" ? "bg-[#0D58A6]" : ""
+                    location.pathname === "/bookings" ? "bg-[#0D58A6]" : ""
                   }`}
                 >
                   <GiCash />
-                  <span className="ms-3">Payment</span>
+                  <span className="ms-3">Bookings</span>
                 </Link>
               </li>
 
