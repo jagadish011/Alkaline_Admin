@@ -27,12 +27,10 @@ const Home = () => {
   const getBookingByDate = async () => {
     try {
       // const response = await axios.get(`${BASE_URL}booking/getBookingForDate?date=${todayDate}&page=${currentPage}&pageSize=10&sortField=bookingDateTime&sortOrder=desc`);
-
-      const response = await axios.get(
-        `${BASE_URL}booking/getBookingForDate?date=2024-7-15&page=${currentPage}&pageSize=10&sortField=bookingDateTime&sortOrder=desc`
-      );
+      const response = await axios.get(`${BASE_URL}booking/getBookingForDate?date=2024-7-15&page=${currentPage}&pageSize=10&sortField=bookingDateTime&sortOrder=desc`);
       console.log(response?.data);
       setBookingDoc(response?.data?.bookingDoc || []);
+      setTotalPages(response?.data?.pagination?.totalPages)
     } catch (error) {
       console.error(error);
     }
