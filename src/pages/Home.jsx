@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { BASE_URL } from "../constants";
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
+
 
 const Home = () => {
   const [bookingDoc, setBookingDoc] = useState([]);
@@ -9,8 +11,10 @@ const Home = () => {
   const [showDeliveredModal, setShowDeliveredModal] = useState(false);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [selectedBookingId, setSelectedBookingId] = useState(null);
-  const [paymentId, setPaymentId] = useState('')
+  const [paymentId, setPaymentId] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const getTodayDate = new Date();
 
   const formatDate = (date) => {
@@ -22,16 +26,24 @@ const Home = () => {
 
   const getBookingByDate = async () => {
     try {
-      // const response = await axios.get(`${BASE_URL}booking/getBookingForDate?date=${todayDate}`);
+      // const response = await axios.get(`${BASE_URL}booking/getBookingForDate?date=${todayDate}&page=${currentPage}&pageSize=10&sortField=bookingDateTime&sortOrder=desc`);
 
       const response = await axios.get(
-        `${BASE_URL}booking/getBookingForDate?date=2024-7-15`
+        `${BASE_URL}booking/getBookingForDate?date=2024-7-15&page=${currentPage}&pageSize=10&sortField=bookingDateTime&sortOrder=desc`
       );
       console.log(response?.data);
       setBookingDoc(response?.data?.bookingDoc || []);
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const nextPage = () => {
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+  };
+
+  const prevPage = () => {
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
   };
 
   useEffect(() => {
@@ -87,11 +99,11 @@ const Home = () => {
       <div className="mt-4 mb-4">
         {bookingsToDisplay.length === 0 ? (
           <div className="flex items-center justify-center bg-slate-300">
-          <div className="mt-6 p-6 border border-gray-300 bg-white mb-6 shadow-md rounded-xl w-96 text-center text-gray-700">
-            <h5 className="font-sans text-xl font-semibold">
-              Nothing to show here
-            </h5>
-          </div>
+            <div className="mt-6 p-6 border border-gray-300 bg-white mb-6 shadow-md rounded-xl w-96 text-center text-gray-700">
+              <h5 className="font-sans text-xl font-semibold">
+                Nothing to show here
+              </h5>
+            </div>
           </div>
         ) : (
           bookingsToDisplay.map((booking, index) => (
@@ -187,14 +199,15 @@ const Home = () => {
     if (!selectedBookingId) return;
     e.preventDefault();
     const reqBody = {
-      paymentId : paymentId
-    }
+      paymentId: paymentId,
+    };
     try {
       const response = await axios.post(
-        `${BASE_URL}booking/updatePaymentIdForCompletedBooking/${selectedBookingId}`, reqBody
+        `${BASE_URL}booking/updatePaymentIdForCompletedBooking/${selectedBookingId}`,
+        reqBody
       );
 
-      console.log(response?.data)
+      console.log(response?.data);
     } catch (error) {
       console.error(error);
     }
@@ -236,6 +249,25 @@ const Home = () => {
           </button>
         </div>
         {renderBookings()}
+        <div className="mt-10 flex justify-center">
+          <div className="border bg-[#D9D9D9] rounded-full flex justify-center">
+            <button
+              className="focus:outline-none text-black p-2 text-2xl"
+              onClick={prevPage}
+              disabled={currentPage === 1}>
+              <MdKeyboardArrowLeft />
+            </button>
+            <p className="p-2">
+              {currentPage} / {totalPages}
+            </p>
+            <button
+              className="focus:outline-none text-black p-2 text-2xl"
+              onClick={nextPage}
+              disabled={currentPage === totalPages}>
+              <MdKeyboardArrowRight />
+            </button>
+          </div>
+        </div>
       </section>
 
       {/* Delivered Modal */}
@@ -292,7 +324,7 @@ const Home = () => {
                   placeholder="Enter UTR Number or COD"
                   required
                   // value={paymentId}
-                  onChange={(e)=>setPaymentId(e.target.value)}
+                  onChange={(e) => setPaymentId(e.target.value)}
                 />
               </div>
               <div className="items-center px-4 py-3">

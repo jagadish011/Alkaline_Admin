@@ -76,12 +76,18 @@ const CustomerDetail = () => {
             </div>
           </div>
         </div>
-        <div className="px-4 pt-6 pb-8">
+        <div className="pt-6 pb-8 flex justify-between">
           <button
             onClick={() => navigate(`/editCustomer/${id}`)}
-            className="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75 transition duration-150 ease-in-out"
+            className="w-32 px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75 transition duration-150 ease-in-out"
           >
             Edit
+          </button>
+          <button
+            onClick={() => navigate(`/customerBooking/${id}`)}
+            className="w-44 px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75 transition duration-150 ease-in-out"
+          >
+            Booking Details
           </button>
         </div>
       </div>
