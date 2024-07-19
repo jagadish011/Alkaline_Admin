@@ -11,6 +11,7 @@ import Profile from './pages/Profile';
 import EditCustomer from './pages/EditCustomer';
 import CustomerBooking from './pages/CustomerBooking';
 import AllBooking from './pages/AllBookings';
+import BookingDatePage from './pages/BookingDatePage';
 
 function App() {
   return (
@@ -20,12 +21,13 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="" element={<Sidebar />}>
             <Route path='home' element={<Home/>}/>
-            <Route path="/allCustomer" element={<AdminCustomer />} />
+            <Route path="allCustomer" element={<AdminCustomer />} />
             <Route path="/customerDetails/:id" element={<CustomerDetail />} />
             <Route path= "/addCustomer" element={<AddCustomer />} />
             <Route path= "/editCustomer/:id" element={<EditCustomer />} />
             <Route path= "/customerBooking/:id" element={<CustomerBooking />} />
             <Route path= "/allBookings" element={<AllBooking />} />
+            <Route path='/bookings' element={<BookingDatePage/>}/>
             <Route path='/profile' element={<Profile/>}/>
           </Route>
         </Routes>

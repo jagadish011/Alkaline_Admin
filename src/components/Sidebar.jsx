@@ -118,7 +118,7 @@ const Sidebar = () => {
                   }`}
                 >
                   <BsCarFrontFill />
-                  <span className="ms-3">Today</span>
+                  <span className="ms-3">Booking by Date</span>
                 </Link>
               </li>
 
