@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { BASE_URL } from "../constants";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 
-
 const Home = () => {
   const [bookingDoc, setBookingDoc] = useState([]);
   const [todayDate, setTodayDate] = useState("");
@@ -27,10 +26,12 @@ const Home = () => {
   const getBookingByDate = async () => {
     try {
       // const response = await axios.get(`${BASE_URL}booking/getBookingForDate?date=${todayDate}&page=${currentPage}&pageSize=10&sortField=bookingDateTime&sortOrder=desc`);
-      const response = await axios.get(`${BASE_URL}booking/getBookingForDate?date=2024-7-15&page=${currentPage}&pageSize=10&sortField=bookingDateTime&sortOrder=desc`);
+      const response = await axios.get(
+        `${BASE_URL}booking/getBookingForDate?date=2024-7-15&page=${currentPage}&pageSize=10&sortField=bookingDateTime&sortOrder=desc`
+      );
       console.log(response?.data);
       setBookingDoc(response?.data?.bookingDoc || []);
-      setTotalPages(response?.data?.pagination?.totalPages)
+      setTotalPages(response?.data?.pagination?.totalPages);
     } catch (error) {
       console.error(error);
     }
@@ -137,6 +138,20 @@ const Home = () => {
                   <p className="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
                     Payment Status: {booking?.payments?.mode}
                   </p>
+                  <p className="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
+                    Order Details:
+                  </p>
+                  <div>
+                    {booking?.products &&
+                      booking?.products.map((product, index) => (
+                        <div className="mb-4 p-4 border rounded" key={index}>
+                          <p>Product Name: {product?.name}</p>
+                          <p>
+                            Ordered Units: {product?.name}X {product?.count}
+                          </p>
+                        </div>
+                      ))}
+                  </div>
                 </div>
 
                 {booking.status !== "COMPLETED" && (
@@ -216,6 +231,7 @@ const Home = () => {
   return (
     <>
       <section className="w-screen md:w-full gap-4 flex flex-col">
+        <p className="text-xl md:text-2xl font-bold">Orders Today</p>
         <div className="w-full bg-background flex flex-col md:flex-row justify-between md:px-10">
           <button
             onClick={() => handleViewChange("total")}
@@ -247,7 +263,7 @@ const Home = () => {
           </button>
         </div>
         {renderBookings()}
-        <div className="mt-10 flex justify-center">
+        <div className="mb-10 flex justify-center">
           <div className="border bg-[#D9D9D9] rounded-full flex justify-center">
             <button
               className="focus:outline-none text-black p-2 text-2xl"

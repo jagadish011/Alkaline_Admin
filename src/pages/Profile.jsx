@@ -6,6 +6,8 @@ import { useParams } from 'react-router-dom'
 const Profile = () => {
     const [userDoc, setUserDoc] = useState('')
 
+    // get user_id from session Storage
+
     const getUserById =  async()=>{
         try {
             const res = await axios.get(`${BASE_URL}user/getUserById/${id}`)

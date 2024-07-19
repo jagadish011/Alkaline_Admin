@@ -128,22 +128,22 @@ const AllBooking = () => {
               <tr className="bg-white border-b hover:bg-gray-50" key={index}>
                 <td className="px-6 py-4">{booking?.customer?.user?.username}</td>
                 <td className="px-6 py-4">
-                  {booking.products.map((product, prodIndex) => (
+                  {booking?.products.map((product, prodIndex) => (
                     <div key={prodIndex}>
-                      {product.name} (Count: {product.count}, Price: ₹{product.price})
+                      {product?.name} (Count: {product?.count}, Price: ₹{product?.price})
                     </div>
                   ))}
                 </td>
-                <td className="px-6 py-4">₹ {booking.totalPrice}/-</td>
-                <td className="px-6 py-4">{booking.status}</td>
+                <td className="px-6 py-4">₹ {booking?.totalPrice}/-</td>
+                <td className="px-6 py-4">{booking?.status}</td>
                 <td className="px-6 py-4">{new Date(booking.updatedAt).toLocaleString()}</td>
                 <td className="px-6 py-4">
-                  {booking.payments.mode === 'ONLINE' ? (
+                  {booking?.payments?.mode === 'ONLINE' ? (
                     <>
-                      {booking.payments.mode} <br />(ID: {booking.payments.paymentId})
+                      {booking?.payments?.mode} <br />(ID: {booking?.payments?.paymentId})
                     </>
                   ) : (
-                    booking.payments.mode
+                    booking?.payments?.mode
                   )}
                 </td>
                 <td className="px-6 py-4">

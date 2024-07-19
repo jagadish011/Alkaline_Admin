@@ -23,7 +23,7 @@ const Login = () => {
       if (res.data.userDoc.role === "ADMIN") {
         setAuth(res?.data?.data);
         setRole(res?.data?.userDoc?.role);
-        sessionStorage.setItem("auth", res?.data?.userDoc?._id);
+        sessionStorage.setItem("user_id", res?.data?.userDoc?._id);
         sessionStorage.setItem("role", res.data.userDoc.role);
         navigate("/home");
         toast.success("Yay ! , You are in", {
