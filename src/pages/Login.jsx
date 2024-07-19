@@ -18,12 +18,12 @@ const Login = () => {
     try {
       const res = await axios.post(`${BASE_URL}user/login`, reqBody);
       console.log(res.data);
-      setAuth(res.data.data);
-      setRole(res.data.userDoc.role);
-      sessionStorage.setItem("user_id", res.data.userDoc._id);
+      setAuth(res?.data?.data);
+      setRole(res?.data?.userDoc?.role);
+      sessionStorage.setItem("user_id", res?.data?.userDoc?._id);
       sessionStorage.setItem("role", res.data.userDoc.role);
       if (res.data.userDoc.role === "ADMIN") {
-        navigate("/admin");
+        navigate("/home");
         toast.success("Yay ! , You are in", {
           position: "top-center",
           autoClose: 5000,
