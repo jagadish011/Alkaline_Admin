@@ -1,14 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-// import Logo from "../assets/BOBO.png";
 import { BsWindowSidebar } from "react-icons/bs";
-import { FaRegCircleUser } from "react-icons/fa6";
-import { BsCarFrontFill } from "react-icons/bs";
-import { GiSteeringWheel } from "react-icons/gi";
 import { LuGripHorizontal } from "react-icons/lu";
-import { HiOutlineUsers } from "react-icons/hi2";
 import { RxCross2 } from "react-icons/rx";
-import { GiCash } from "react-icons/gi";
+import { CiCalendarDate } from "react-icons/ci";
+import { IoPersonAddOutline } from "react-icons/io5";
+import { FaPeopleGroup } from "react-icons/fa6";
+import { IoMdBook } from "react-icons/io";
+import { CgProfile } from "react-icons/cg";
 import { Outlet } from "react-router";
 
 const Sidebar = () => {
@@ -51,10 +50,6 @@ const Sidebar = () => {
               <RxCross2 />
             </button>
             <ul className="space-y-2 font-medium">
-              {/* <li className="flex items-center justify-center py-16">
-                <img src={Logo} alt="" />
-              </li> */}
-
               <li>
                 <Link
                   to="/home"
@@ -74,7 +69,7 @@ const Sidebar = () => {
                     location.pathname === "/allCustomer" ? "bg-[#0D58A6]" : ""
                   }`}
                 >
-                  <FaRegCircleUser />
+                  <FaPeopleGroup />
                   <span className="ms-3">All Customers</span>
                 </Link>
               </li>
@@ -85,40 +80,20 @@ const Sidebar = () => {
                     location.pathname === "/addCustomer" ? "bg-[#0D58A6]" : ""
                   }`}
                 >
-                  <FaRegCircleUser />
+                  <IoPersonAddOutline />
                   <span className="ms-3">Add Customer</span>
                 </Link>
               </li>
 
-{/* 
               <li>
                 <Link
-                  to="/driver"
+                  to="/allBookings"
                   className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
-                    location.pathname === "/driver" ? "bg-[#0D58A6]" : ""
-                  }`}
-                  onClick={() => setShowVerification(true)}
-                >
-                  <GiSteeringWheel />
-                  <span className="ms-3">Drivers</span>
-                </Link>
-                <Link to="/verification">
-                  {showVerification && (
-                    <p className="ml-16 text-yellow-500 py-2 text-sm">Verification</p>
-                  )}
-                </Link>
-              </li>
-  */}
-
-              <li>
-                <Link
-                  to="/bookingsToday"
-                  className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
-                    location.pathname === "/bookingsToday" ? "bg-[#0D58A6]" : ""
+                    location.pathname === "/allBookings" ? "bg-[#0D58A6]" : ""
                   }`}
                 >
-                  <BsCarFrontFill />
-                  <span className="ms-3">Booking by Date</span>
+                  <IoMdBook />
+                  <span className="ms-3">All Bookings</span>
                 </Link>
               </li>
 
@@ -129,8 +104,8 @@ const Sidebar = () => {
                     location.pathname === "/bookings" ? "bg-[#0D58A6]" : ""
                   }`}
                 >
-                  <GiCash />
-                  <span className="ms-3">Bookings</span>
+                  <CiCalendarDate />
+                  <span className="ms-3">Bookings Date</span>
                 </Link>
               </li>
 
@@ -141,7 +116,7 @@ const Sidebar = () => {
                     location.pathname === "/profile" ? "bg-[#0D58A6]" : ""
                   }`}
                 >
-                  <HiOutlineUsers />
+                  <CgProfile />
                   <span className="ms-3">Profile</span>
                 </Link>
               </li>
