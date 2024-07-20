@@ -32,7 +32,7 @@ const AdminCustomer = () => {
 
   useEffect(() => {
     fetchCustomers();
-    return () => fetchCustomers.cancel(); // Cleanup debounce on unmount
+    return () => fetchCustomers.cancel(); 
   }, [fetchCustomers]);
 
   const nextPage = () => {

@@ -9,6 +9,8 @@ import { FaPeopleGroup } from "react-icons/fa6";
 import { IoMdBook } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { Outlet } from "react-router";
+import { FaBottleWater } from "react-icons/fa6";
+import { GiWaterBottle } from "react-icons/gi";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -87,6 +89,29 @@ const Sidebar = () => {
 
               <li>
                 <Link
+                  to="/allProducts"
+                  className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
+                    location.pathname === "/allProducts" ? "bg-[#0D58A6]" : ""
+                  }`}
+                >
+                  <FaBottleWater />
+                  <span className="ms-3">All Products</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/addProduct"
+                  className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
+                    location.pathname === "/addProduct" ? "bg-[#0D58A6]" : ""
+                  }`}
+                >
+                  <GiWaterBottle />
+                  <span className="ms-3">Add Product</span>
+                </Link>
+              </li>
+
+              <li>
+                <Link
                   to="/allBookings"
                   className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
                     location.pathname === "/allBookings" ? "bg-[#0D58A6]" : ""
@@ -109,7 +134,7 @@ const Sidebar = () => {
                 </Link>
               </li>
 
-              <li>
+              {/* <li>
                 <Link
                   to="/profile"
                   className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
@@ -119,7 +144,7 @@ const Sidebar = () => {
                   <CgProfile />
                   <span className="ms-3">Profile</span>
                 </Link>
-              </li>
+              </li> */}
 
               <li className="mt-16">
                 <Link

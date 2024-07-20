@@ -13,6 +13,9 @@ import CustomerBooking from './pages/CustomerBooking';
 import AllBooking from './pages/AllBookings';
 import BookingDatePage from './pages/BookingDatePage';
 import { AuthProvider } from './context/AuthProvider';
+import AllProducts from './pages/AllProducts';
+import EditProduct from './pages/EditProduct';
+import AddProduct from './pages/addProducts';
 
 function App() {
   return (
@@ -31,6 +34,9 @@ function App() {
               <Route path="customerBooking/:id" element={<CustomerBooking />} />
               <Route path="allBookings" element={<AllBooking />} />
               <Route path="bookings" element={<BookingDatePage />} />
+              <Route path="allProducts" element={<AllProducts />} />
+              <Route path="editProduct/:id" element={<EditProduct />} />
+              <Route path='addProduct' element={<AddProduct />} />
               <Route path="profile" element={<Profile />} />
             </Route>
           </Routes>
