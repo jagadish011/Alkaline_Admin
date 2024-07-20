@@ -106,7 +106,7 @@ const AdminCustomer = () => {
           Download All
         </button>
       </div>
-      <div className="relative border border-gray-800  shadow-md sm:rounded-lg">
+      <div className="relative border  shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-800">
           <thead className="text-xs text-gray-800 uppercase bg-slate-100 border-b border-gray-300">
             <tr>

@@ -95,9 +95,9 @@ const Home = () => {
     }
 
     return (
-      <div className="mt-4 mb-4">
+      <div className="mt-4 mb-4 grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-300">
         {bookingsToDisplay.length === 0 ? (
-          <div className="flex items-center justify-center bg-slate-300">
+          <div className="flex items-center justify-center ">
             <div className="mt-6 p-6 border border-gray-300 bg-white mb-6 shadow-md rounded-xl w-96 text-center text-gray-700">
               <h5 className="font-sans text-xl font-semibold">
                 Nothing to show here

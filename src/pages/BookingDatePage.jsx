@@ -206,17 +206,17 @@ const BookingDatePage = () => {
           )}
         </div>
         <div>
-          Bookings
+          {/* Bookings */}
           <div className="w-full bg-background flex flex-col md:flex-row justify-between md:px-10">
             <p className="text-xl md:text-2xl font-bold">Booking Details</p>
             <button
-              className="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded md:mt-0"
+              className="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded md:mt-0 mb-2"
               onClick={downloadExcel}>
               Download All
             </button>
           </div>
           <div>
-            <div className="relative border border-gray-800  shadow-md sm:rounded-lg">
+            <div className="relative border   shadow-md sm:rounded-lg">
               <table className="w-full text-sm text-left rtl:text-right text-gray-800">
                 <thead className="text-xs text-gray-800 uppercase bg-slate-100 border-b border-gray-300">
                   <tr>
