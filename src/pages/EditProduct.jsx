@@ -9,17 +9,16 @@ const EditProduct = () => {
   const [price, setPrice] = useState('');
   const [capacity, setCapacity] = useState('');
   const [productDesc, setProductDesc] = useState('');
-  const [img, setImg] = useState(''); // Static image, can be set to a default if required
+  const [img, setImg] = useState('');
 
   const { id } = useParams();
   const navigate = useNavigate();
-console.log(id);
+
   const getProductById = async () => {
     try {
       const response = await axios.get(`${BASE_URL}product/getProductById/${id}`);
       if (response.data.success) {
         const product = response.data.productDoc;
-        console.log(product);
         setName(product.name);
         setPrice(product.price);
         setCapacity(product.capacity);
@@ -37,19 +36,19 @@ console.log(id);
   const updateProduct = async (e) => {
     e.preventDefault();
     const reqBody = {
+      productId: id,
       name,
       price,
       capacity,
       productDesc,
-      orderCount: 0, // Keeping orderCount as 0
-      img: '', // Static image, can be updated if needed
+      img,
     };
 
     try {
       const response = await axios.post(`${BASE_URL}product/editProduct/${id}`, reqBody);
       if (response.data.success) {
         toast.success('Product updated successfully');
-        navigate('/allProducts'); // Redirect to All Products page after update
+        navigate('/allProducts', { replace: true }); 
       } else {
         toast.error('Failed to update product');
       }
