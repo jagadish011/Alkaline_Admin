@@ -15,6 +15,7 @@ const CustomerBooking = () => {
       const res = await axios.get(`${BASE_URL}booking/getBookingByCustomer/${id}`);
       if (res.status === 200 ) {
         setBookings(res.data.bookingDoc);
+        console.log(res.data);
         if (!toastShown.current) {
           toast.success("Bookings fetched successfully.");
           toastShown.current = true;
@@ -87,12 +88,18 @@ const CustomerBooking = () => {
           </div>
           <div className="mt-4">
             <h4 className="text-lg font-semibold mb-2">Payment:</h4>
-            <p className="text-lg">
-              Mode: <span className="font-bold">{booking.payments.mode}</span>
-            </p>
-            <p className="text-lg">
-              Payment ID: <span className="font-bold">{booking.payments.paymentId}</span>
-            </p>
+            {booking.payments ? (
+              <>
+                <p className="text-lg">
+                  Mode: <span className="font-bold">{booking.payments.mode}</span>
+                </p>
+                <p className="text-lg">
+                  Payment ID: <span className="font-bold">{booking.payments.paymentId}</span>
+                </p>
+              </>
+            ) : (
+              <p className="text-lg">No payment details available.</p>
+            )}
           </div>
         </div>
       ))}
