@@ -49,7 +49,7 @@ const CustomerBooking = () => {
       {bookings.map((booking) => (
         <div key={booking._id} className="mb-8 p-4 bg-gray-100 rounded-lg shadow">
           <h3 className="text-xl font-semibold mb-2">
-            Booking Date: {new Date(booking.bookingDateTime).toLocaleString()}
+            Booking Date: {new Date(booking.updatedAt).toLocaleString()}
           </h3>
           <p className="text-lg">
             Status: <span className="font-bold">{booking.status}</span>

@@ -20,6 +20,7 @@ const AllBooking = () => {
       try {
         const url = `${BASE_URL}booking/getAllBookings?page=${currentPage}&pageSize=10`;
         const res = await axios.get(url);
+        console.log(res.data);
         setBookingDoc(res.data.bookings);
         setTotalPages(res.data.pagination.totalPages);
       } catch (error) {
