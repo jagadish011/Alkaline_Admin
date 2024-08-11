@@ -7,6 +7,7 @@ import * as XLSX from "xlsx";
 import debounce from "lodash/debounce";
 import { BASE_URL } from "../constants";
 import { toast } from "react-toastify";
+import { IoTrashBin } from "react-icons/io5";
 
 const AdminCustomer = () => {
   const [customerDoc, setCustomerDoc] = useState([]);
@@ -95,6 +96,20 @@ const AdminCustomer = () => {
     XLSX.writeFile(workbook, "customers.xlsx");
   };
 
+  const deleteCustomer = async (customerId) => {
+    try {
+      const confirmDelete = window.confirm("Are you sure you want to delete this customer?");
+      if (confirmDelete) {
+        await axios.delete(`${BASE_URL}customer/deleteCustomer/${customerId}`);
+        setCustomerDoc((prevDocs) => prevDocs.filter((customer) => customer._id !== customerId));
+        toast.success("Customer deleted successfully.");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to delete customer.");
+    }
+  };
+
   return (
     <section className="w-screen md:w-full gap-4 flex flex-col">
       <div className="w-full bg-background flex flex-col md:flex-row justify-between md:px-10">
@@ -140,13 +155,17 @@ const AdminCustomer = () => {
                       View More
                     </button>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 flex gap-8 items-center">
                     <button
                       className="bg-indigo-700 hover:bg-indigo-500 text-white text-xs font-normal p-1.5 rounded-md"
                       onClick={() => downloadCustomerPDF(customer)}
                     >
                       Download PDF
                     </button>
+                    <IoTrashBin
+                      className="text-red-500 text-2xl cursor-pointer"
+                      onClick={() => deleteCustomer(customer._id)}
+                    />
                   </td>
                 </tr>
               ))
