@@ -13,6 +13,7 @@ const CustomerBooking = () => {
   const fetchBookings = async () => {
     try {
       const res = await axios.get(`${BASE_URL}booking/getBookingByCustomer/${id}`);
+      console.log(res.data)
       if (res.status === 200 ) {
         setBookings(res.data.bookingDoc);
         console.log(res.data);
