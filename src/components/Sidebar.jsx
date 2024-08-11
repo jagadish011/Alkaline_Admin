@@ -134,17 +134,17 @@ const Sidebar = () => {
                 </Link>
               </li>
 
-              {/* <li>
+              <li>
                 <Link
-                  to="/profile"
+                  to="/addAdmin"
                   className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
                     location.pathname === "/profile" ? "bg-[#0D58A6]" : ""
                   }`}
                 >
                   <CgProfile />
-                  <span className="ms-3">Profile</span>
+                  <span className="ms-3">Add Admin</span>
                 </Link>
-              </li> */}
+              </li>
 
               <li className="mt-16">
                 <Link

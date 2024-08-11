@@ -8,6 +8,7 @@ import * as XLSX from "xlsx";
 import debounce from "lodash/debounce";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../constants";
+import { IoTrashBin } from "react-icons/io5";
 
 const AllBooking = () => {
   const [bookingDoc, setBookingDoc] = useState([]);
@@ -99,6 +100,18 @@ const AllBooking = () => {
     XLSX.writeFile(workbook, "bookings.xlsx");
   };
 
+  const deleteBooking= async(bookingId)=>{
+    try {
+      const confirmDelete = window.confirm("You are deleting this booking and all it's data, THere is no turning back now!");
+      if (confirmDelete) {
+        await axios.delete(`${BASE_URL}booking/deleteBooking/${bookingId}`);
+        setBookingDoc((prevDocs) => prevDocs.filter((booking) => booking._id !== bookingId));      }
+    } catch (error) {
+      console.error("Error deleteing booking data",error);
+      toast.error("Failed to delete the Booking")
+    }
+  }
+
   return (
     <section className="w-screen md:w-full gap-4 flex flex-col">
       <div className="w-full bg-background flex flex-col md:flex-row justify-between md:px-10">
@@ -154,6 +167,10 @@ const AllBooking = () => {
                   >
                     <FaDownload/>
                   </button>
+                  <IoTrashBin
+                    className="text-red-500 text-2xl cursor-pointer"
+                    onClick={()=>deleteBooking(booking._id)}
+                  />
                 </td>
               </tr>
             ))
