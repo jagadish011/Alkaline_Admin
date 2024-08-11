@@ -17,6 +17,7 @@ import AllProducts from './pages/AllProducts';
 import EditProduct from './pages/EditProduct';
 import AddProduct from './pages/AddProducts';
 import AddAdmin from './pages/AddAdmin';
+import AllAdmin from './pages/AllAdmin';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
               <Route path="allCustomer" element={<AdminCustomer />} />
               <Route path="customerDetails/:id" element={<CustomerDetail />} />
               <Route path="addAdmin" element={<AddAdmin/>}/>
+              <Route path='allAdmins' element={<AllAdmin/>}/>
               <Route path="addCustomer" element={<AddCustomer />} />
               <Route path="editCustomer/:id" element={<EditCustomer />} />
               <Route path="customerBooking/:id" element={<CustomerBooking />} />

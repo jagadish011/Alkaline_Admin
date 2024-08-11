@@ -11,6 +11,7 @@ import { CgProfile } from "react-icons/cg";
 import { Outlet } from "react-router";
 import { FaBottleWater } from "react-icons/fa6";
 import { GiWaterBottle } from "react-icons/gi";
+import { GrGroup } from "react-icons/gr";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -138,11 +139,23 @@ const Sidebar = () => {
                 <Link
                   to="/addAdmin"
                   className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
-                    location.pathname === "/profile" ? "bg-[#0D58A6]" : ""
+                    location.pathname === "/addAdmin" ? "bg-[#0D58A6]" : ""
                   }`}
                 >
                   <CgProfile />
                   <span className="ms-3">Add Admin</span>
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/allAdmins"
+                  className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
+                    location.pathname === "/allAdmins" ? "bg-[#0D58A6]" : ""
+                  }`}
+                >
+                  <GrGroup />
+                  <span className="ms-3">All Admin</span>
                 </Link>
               </li>
 
