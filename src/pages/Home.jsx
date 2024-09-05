@@ -25,10 +25,12 @@ const Home = () => {
 
   const getBookingByDate = async () => {
     try {
-      // const response = await axios.get(`${BASE_URL}booking/getBookingForDate?date=${todayDate}&page=${currentPage}&pageSize=10&sortField=bookingDateTime&sortOrder=desc`);
       const response = await axios.get(
-        `${BASE_URL}booking/getBookingForDate?date=2024-7-15&page=${currentPage}&pageSize=10&sortField=bookingDateTime&sortOrder=desc`
+        `${BASE_URL}booking/getBookingForDate?date=${todayDate}&page=${currentPage}&pageSize=10&sortField=bookingDateTime&sortOrder=desc`
       );
+      // const response = await axios.get(
+      //   `${BASE_URL}booking/getBookingForDate?date=2024-7-15&page=${currentPage}&pageSize=10&sortField=bookingDateTime&sortOrder=desc`
+      // );
       console.log(response?.data);
       setBookingDoc(response?.data?.bookingDoc || []);
       setTotalPages(response?.data?.pagination?.totalPages);
@@ -94,6 +96,8 @@ const Home = () => {
         break;
     }
 
+    useEffect(() => {}, [bookingDoc]);
+
     return (
       <div className="mt-4 mb-4 grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-300">
         {bookingsToDisplay.length === 0 ? (
@@ -137,6 +141,9 @@ const Home = () => {
                   </p>
                   <p className="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
                     Payment Status: {booking?.payments?.mode}
+                  </p>
+                  <p className="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
+                    Payment ID: {booking?.payments?.paymentId}
                   </p>
                   <p className="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
                     Order Details:
