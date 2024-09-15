@@ -12,6 +12,7 @@ import { Outlet } from "react-router";
 import { FaBottleWater } from "react-icons/fa6";
 import { GiWaterBottle } from "react-icons/gi";
 import { GrGroup } from "react-icons/gr";
+import bottle from "../assets/bottle.jpeg";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,6 +53,15 @@ const Sidebar = () => {
             >
               <RxCross2 />
             </button>
+
+            <div className="flex items-center py-7 ml-4">
+              <img
+                src={bottle}
+                className="w-10 h-10 rounded-full"
+                alt="Admin"
+              />
+                <h3 className="text-white ml-2 font-bold">Alkaline Water</h3>
+            </div>
             <ul className="space-y-2 font-medium">
               <li>
                 <Link
