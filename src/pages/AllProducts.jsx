@@ -75,7 +75,7 @@ const AllProducts = () => {
                 {product.productDesc}
               </p>
               <button
-                className="bg-indigo-700 hover:bg-indigo-500 text-white text-xs font-normal p-2 rounded-md w-full"
+                className="bg-indigo-700 hover:bg-indigo-500 text-white text-xs font-normal p-2 rounded-md w-full mb-3"
                 onClick={() => handleEdit(product._id)}>
                 Edit
               </button>
