@@ -17,6 +17,7 @@ import EditProduct from './pages/EditProduct';
 import AddProduct from './pages/AddProducts';
 import AddAdmin from './pages/AddAdmin';
 import AllAdmin from './pages/AllAdmin';
+import Revenue from './pages/Revenue';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
               <Route path="editProduct/:id" element={<EditProduct />} />
               <Route path='addProduct' element={<AddProduct />} />
               <Route path="profile" element={<Profile />} />
+              <Route path="/revenue" element={<Revenue/>}/>
             </Route>
           </Routes>
         </Router>

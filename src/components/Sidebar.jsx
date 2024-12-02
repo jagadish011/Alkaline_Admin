@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { BsWindowSidebar } from "react-icons/bs";
-import { LuGripHorizontal } from "react-icons/lu";
+// import { LuGripHorizontal } from "react-icons/lu";
 import { RxCross2 } from "react-icons/rx";
 import { CiCalendarDate } from "react-icons/ci";
 import { IoPersonAddOutline } from "react-icons/io5";
@@ -28,15 +28,15 @@ const Sidebar = () => {
   return (
     <>
       <div>
-        <button
+        {/* <button
           onClick={toggleSidebar}
           type="button"
           className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg  hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 ">
           <span className="sr-only">Open sidebar</span>
           <LuGripHorizontal className="w-6 h-6" />
-        </button>
-        <div className="flex justify-end mx-8">
-          <Profile />
+        </button> */}
+        <div className="flex justify-end mx-24 mb-10 mt-8 ">
+          <div><Profile/></div>
         </div>
 
         {/* Sidebar */}
