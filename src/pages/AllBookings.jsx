@@ -102,7 +102,7 @@ const AllBooking = () => {
 
   const deleteBooking= async(bookingId)=>{
     try {
-      const confirmDelete = window.confirm("You are deleting this booking and all it's data, THere is no turning back now!");
+      const confirmDelete = window.confirm("You are deleting this booking and all it's data, There is no turning back after this!");
       if (confirmDelete) {
         await axios.delete(`${BASE_URL}booking/deleteBooking/${bookingId}`);
         setBookingDoc((prevDocs) => prevDocs.filter((booking) => booking._id !== bookingId));      }
@@ -130,7 +130,8 @@ const AllBooking = () => {
               <th scope="col" className="px-6 py-3">Customer Name</th>
               <th scope="col" className="px-6 py-3">Products</th>
               <th scope="col" className="px-6 py-3">Total Price</th>
-              <th scope="col" className="px-6 py-3">Status</th>
+              <th scope="col" className="px-6 py-3">Booking Status</th>
+              <th scope="col" className="px-6 py-3">Payment Status</th>
               <th scope="col" className="px-6 py-3">Date & Time</th>
               <th scope="col" className="px-6 py-3">Payment Mode</th>
               <th scope="col" className="px-6 py-3">Actions</th>
@@ -150,6 +151,7 @@ const AllBooking = () => {
                 </td>
                 <td className="px-6 py-4">₹ {booking?.totalPrice}/-</td>
                 <td className="px-6 py-4">{booking?.status}</td>
+                <td className="px-6 py-4">{booking?.payments?.paymentId}</td>
                 <td className="px-6 py-4">{new Date(booking.updatedAt).toLocaleString()}</td>
                 <td className="px-6 py-4">
                   {booking?.payments?.mode === 'ONLINE' ? (

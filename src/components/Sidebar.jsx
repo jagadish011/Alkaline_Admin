@@ -13,19 +13,17 @@ import { FaBottleWater } from "react-icons/fa6";
 import { GiWaterBottle } from "react-icons/gi";
 import { GrGroup } from "react-icons/gr";
 import bottle from "../assets/bottle.jpeg";
+import Profile from "./Profile";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [showVerification, setShowVerification] = useState(false);
   const location = useLocation();
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
-  useEffect(() => {
-    setShowVerification(location.pathname === "/driver");
-  }, [location]);
+  useEffect(() => {}, [location]);
 
   return (
     <>
@@ -33,24 +31,24 @@ const Sidebar = () => {
         <button
           onClick={toggleSidebar}
           type="button"
-          className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg  hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
-        >
+          className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg  hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 ">
           <span className="sr-only">Open sidebar</span>
           <LuGripHorizontal className="w-6 h-6" />
         </button>
+        <div className="flex justify-end mx-8">
+          <Profile />
+        </div>
 
         {/* Sidebar */}
         <aside
           className={`fixed top-0 left-0 z-40 w-64 h-screen bg-[#101223] transition-transform ${
             isOpen ? "translate-x-0" : "-translate-x-full"
           } sm:translate-x-0`}
-          aria-label="Sidebar"
-        >
+          aria-label="Sidebar">
           <div className="h-full px-3 py-4 ">
             <button
               onClick={toggleSidebar}
-              className="absolute top-2 right-2 text-gray-400 hover:text-gray-300 focus:outline-none lg:hidden"
-            >
+              className="absolute top-2 right-2 text-gray-400 hover:text-gray-300 focus:outline-none lg:hidden">
               <RxCross2 />
             </button>
 
@@ -60,7 +58,7 @@ const Sidebar = () => {
                 className="w-10 h-10 rounded-full"
                 alt="Admin"
               />
-                <h3 className="text-white ml-2 font-bold">Alkaline Water</h3>
+              <h3 className="text-white ml-2 font-bold">Alkaline Water</h3>
             </div>
             <ul className="space-y-2 font-medium">
               <li>
@@ -68,8 +66,7 @@ const Sidebar = () => {
                   to="/home"
                   className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
                     location.pathname === "/home" ? "bg-[#0D58A6]" : ""
-                  }`}
-                >
+                  }`}>
                   <BsWindowSidebar />
                   <span className="ms-3">Dashboard</span>
                 </Link>
@@ -80,8 +77,7 @@ const Sidebar = () => {
                   to="/allCustomer"
                   className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
                     location.pathname === "/allCustomer" ? "bg-[#0D58A6]" : ""
-                  }`}
-                >
+                  }`}>
                   <FaPeopleGroup />
                   <span className="ms-3">All Customers</span>
                 </Link>
@@ -91,8 +87,7 @@ const Sidebar = () => {
                   to="/addCustomer"
                   className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
                     location.pathname === "/addCustomer" ? "bg-[#0D58A6]" : ""
-                  }`}
-                >
+                  }`}>
                   <IoPersonAddOutline />
                   <span className="ms-3">Add Customer</span>
                 </Link>
@@ -103,8 +98,7 @@ const Sidebar = () => {
                   to="/allProducts"
                   className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
                     location.pathname === "/allProducts" ? "bg-[#0D58A6]" : ""
-                  }`}
-                >
+                  }`}>
                   <FaBottleWater />
                   <span className="ms-3">All Products</span>
                 </Link>
@@ -114,8 +108,7 @@ const Sidebar = () => {
                   to="/addProduct"
                   className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
                     location.pathname === "/addProduct" ? "bg-[#0D58A6]" : ""
-                  }`}
-                >
+                  }`}>
                   <GiWaterBottle />
                   <span className="ms-3">Add Product</span>
                 </Link>
@@ -126,8 +119,7 @@ const Sidebar = () => {
                   to="/allBookings"
                   className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
                     location.pathname === "/allBookings" ? "bg-[#0D58A6]" : ""
-                  }`}
-                >
+                  }`}>
                   <IoMdBook />
                   <span className="ms-3">All Bookings</span>
                 </Link>
@@ -138,8 +130,7 @@ const Sidebar = () => {
                   to="/bookings"
                   className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
                     location.pathname === "/bookings" ? "bg-[#0D58A6]" : ""
-                  }`}
-                >
+                  }`}>
                   <CiCalendarDate />
                   <span className="ms-3">Bookings Date</span>
                 </Link>
@@ -150,8 +141,7 @@ const Sidebar = () => {
                   to="/addAdmin"
                   className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
                     location.pathname === "/addAdmin" ? "bg-[#0D58A6]" : ""
-                  }`}
-                >
+                  }`}>
                   <CgProfile />
                   <span className="ms-3">Add Admin</span>
                 </Link>
@@ -162,8 +152,7 @@ const Sidebar = () => {
                   to="/allAdmins"
                   className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
                     location.pathname === "/allAdmins" ? "bg-[#0D58A6]" : ""
-                  }`}
-                >
+                  }`}>
                   <GrGroup />
                   <span className="ms-3">All Admin</span>
                 </Link>
@@ -174,15 +163,13 @@ const Sidebar = () => {
                   to="/login"
                   className={`flex items-center p-2 text-white rounded-xl hover:bg-[#0D58A6] group px-10 text-lg ${
                     location.pathname === "/login" ? "bg-[#0D58A6]" : ""
-                  }`}
-                >
+                  }`}>
                   <svg
                     className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
-                    viewBox="0 0 18 16"
-                  >
+                    viewBox="0 0 18 16">
                     <path
                       stroke="currentColor"
                       strokeLinecap="round"

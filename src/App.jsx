@@ -1,13 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-
 import Login from './pages/Login';
 import Sidebar from './components/Sidebar';
 import AdminCustomer from './pages/AllCustomer';
 import CustomerDetail from './pages/CustomerDetails';
 import AddCustomer from './pages/AddCustomer';
 import Home from './pages/Home';
-import Profile from './pages/Profile';
+import Profile from './components/Profile';
 import EditCustomer from './pages/EditCustomer';
 import CustomerBooking from './pages/CustomerBooking';
 import AllBooking from './pages/AllBookings';

@@ -24,7 +24,7 @@ const Login = () => {
         setAuth(res?.data?.data);
         setRole(res?.data?.userDoc?.role);
         sessionStorage.setItem("user_id", res?.data?.userDoc?._id);
-        sessionStorage.setItem("role", res.data.userDoc.role);
+        sessionStorage.setItem("role", res?.data?.userDoc?.role);
         navigate("/home");
         toast.success("Yay ! , You are in", {
           position: "top-center",
